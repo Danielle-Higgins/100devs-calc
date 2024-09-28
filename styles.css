@@ -84,11 +84,13 @@ img {
   grid-column: span 2;
 }
 
-.buttons .number {
+.buttons .number,
+.buttons .decimal {
   transition: 0.5s;
 }
 
-.buttons .number:hover {
+.buttons .number:hover,
+.buttons .decimal:hover {
   background-color: #cfd8dc;
 }
 
