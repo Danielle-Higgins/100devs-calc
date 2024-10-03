@@ -10,35 +10,37 @@
     <div class="container">
       <div class="calculator">
         <div class="display">
-          <input type="text" name="display" readonly />
+          <input type="text" name="display" id="display" readonly value="0" />
         </div>
 
         <div class="buttons">
-          <button class="all-clear">AC</button>
-          <button class="delete">DE</button>
-          <button class="operator">%</button>
-          <button class="operator">/</button>
+          <button class="all-clear" id="all-clear">AC</button>
+          <button class="delete" id="delete">DE</button>
+          <button class="operator click-buttons">%</button>
+          <button class="operator click-buttons">/</button>
 
-          <button class="number">7</button>
-          <button class="number">8</button>
-          <button class="number">9</button>
-          <button class="operator">*</button>
+          <button class="number click-buttons">7</button>
+          <button class="number click-buttons">8</button>
+          <button class="number click-buttons">9</button>
+          <button class="operator click-buttons">*</button>
 
-          <button class="number">4</button>
-          <button class="number">5</button>
-          <button class="number">6</button>
-          <button class="operator">-</button>
+          <button class="number click-buttons">4</button>
+          <button class="number click-buttons">5</button>
+          <button class="number click-buttons">6</button>
+          <button class="operator click-buttons">-</button>
 
-          <button class="number">1</button>
-          <button class="number">2</button>
-          <button class="number">3</button>
-          <button class="operator">+</button>
+          <button class="number click-buttons">1</button>
+          <button class="number click-buttons">2</button>
+          <button class="number click-buttons">3</button>
+          <button class="operator click-buttons">+</button>
 
-          <button class="number">0</button>
-          <button class="decimal">.</button>
-          <button class="equal">=</button>
+          <button class="number click-buttons">0</button>
+          <button class="decimal" id="decimal">.</button>
+          <button class="equal" id="equal">=</button>
         </div>
       </div>
     </div>
+
+    <script src="./main.js"></script>
   </body>
 </html>
