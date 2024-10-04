@@ -79,19 +79,19 @@ class Calculator {
 
   addition(num1, num2) {
     let result = parseFloat(num1) + parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(3);
+    if (result % 1 !== 0) result = result.toFixed(2);
     return result;
   }
 
   subtraction(num1, num2) {
     let result = parseFloat(num1) - parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(3);
+    if (result % 1 !== 0) result = result.toFixed(2);
     return result;
   }
 
   multiplication(num1, num2) {
     let result = parseFloat(num1) * parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(3);
+    if (result % 1 !== 0) result = result.toFixed(2);
     return result;
   }
 
@@ -99,8 +99,7 @@ class Calculator {
     let result = parseFloat(num1) / parseFloat(num2);
     // division by zero
     if (result === Infinity) {
-      this.#displayValues = "Not a number";
-      return;
+      return "NaN";
     }
     if (result % 1 !== 0) result = result.toFixed(3);
     return result;
