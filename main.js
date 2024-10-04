@@ -40,18 +40,22 @@ class Calculator {
 
     this.decimalBtn.addEventListener("click", (e) => {
       this.append(e);
-      this.updateDisplay();
     });
 
     this.equalBtn.addEventListener("click", () => {
       // pressing equal before entering any values for the numbers can cause issues
-      if (this.#firstNum === "" || this.#secondNum === "") return;
+      if (this.#firstNum === "" && this.#secondNum === "") return;
 
-      this.#answer = this.calculate(
-        this.#firstNum,
-        this.#operator,
-        this.#secondNum
-      );
+      if (this.#firstNum && this.#secondNum === "") {
+        if (this.#operator === "%") this.#answer = this.#firstNum / 100;
+        else return;
+      } else {
+        this.#answer = this.calculate(
+          this.#firstNum,
+          this.#operator,
+          this.#secondNum
+        );
+      }
 
       // show answer in input
       this.display.value = this.#answer;
@@ -67,7 +71,6 @@ class Calculator {
     this.buttons.forEach((button) => {
       button.addEventListener("click", (e) => {
         this.append(e);
-        this.updateDisplay();
       });
     });
   }
@@ -76,19 +79,19 @@ class Calculator {
 
   addition(num1, num2) {
     let result = parseFloat(num1) + parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(2);
+    if (result % 1 !== 0) result = result.toFixed(3);
     return result;
   }
 
   subtraction(num1, num2) {
     let result = parseFloat(num1) - parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(2);
+    if (result % 1 !== 0) result = result.toFixed(3);
     return result;
   }
 
   multiplication(num1, num2) {
     let result = parseFloat(num1) * parseFloat(num2);
-    if (result % 1 !== 0) result = result.toFixed(2);
+    if (result % 1 !== 0) result = result.toFixed(3);
     return result;
   }
 
@@ -99,12 +102,8 @@ class Calculator {
       this.#displayValues = "Not a number";
       return;
     }
-    if (result % 1 !== 0) result = result.toFixed(2);
+    if (result % 1 !== 0) result = result.toFixed(3);
     return result;
-  }
-
-  percent(num1, num2) {
-    return num1 / 100;
   }
 
   // does the calculations
@@ -123,9 +122,6 @@ class Calculator {
         break;
       case "/":
         result = this.division(num1, num2);
-        break;
-      case "%":
-        result = this.percent(num1);
         break;
     }
 
@@ -157,12 +153,15 @@ class Calculator {
     if (this.#displayValues === "") this.display.value = 0;
     else {
       this.display.value = this.#displayValues;
+
+      // create array with the first num, operator, and second num
       const array = this.splitExpression(this.#displayValues);
       this.#firstNum = array[0];
       this.#operator = array[1];
       this.#secondNum = array[2];
     }
 
+    // check if firstNum or secondNumm have a decimal already
     const currentInput =
       this.#operator === "" ? this.#firstNum : this.#secondNum;
     if (currentInput.includes(".")) {
@@ -179,6 +178,7 @@ class Calculator {
     let secondNumber = "";
     let operatorFound = false;
 
+    // loop through each character in string
     for (let char of expression) {
       if ("+-*/%".includes(char)) {
         operator = char;
