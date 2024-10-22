@@ -16,7 +16,7 @@ While building this calculator, I used css grid to align the buttons how I wante
 
 ## Optimizations
 
-If/When I improve this project, I want to prevent the user from clicking on an operator button if they havent click on a number button yet. I also want to make it to where you can only click on an operator once in a calculation. Lastly, I would want to add keyboard functionality as well.
+If/When I improve this project, I want to prevent the user from clicking on an operator button if they haven't click on a number button yet. I also want to make it to where you can only click on an operator once in a calculation. Lastly, I would want to add keyboard functionality as well.
 
 ## Lessons Learned:
 
