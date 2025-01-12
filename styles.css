@@ -78,15 +78,11 @@ img {
   color: #000;
   border: none;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .buttons .equal {
   grid-column: span 2;
-}
-
-.buttons .number,
-.buttons .decimal {
-  transition: 0.5s;
 }
 
 .buttons .number:hover,
@@ -100,7 +96,6 @@ img {
 .buttons .delete {
   background-color: #ff6d00;
   color: #fff;
-  transition: 0.5s;
 }
 
 .buttons .operator:hover,
