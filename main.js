@@ -4,45 +4,46 @@
 
 class Calculator {
   // private properties
-  #firstNum;
-  #secondNum;
-  #operator;
-  #answer;
-  #displayValues;
+  #display;
+  #allClearBtn;
+  #deleteBtn;
+  #decimalBtn;
+  #equalBtn;
+  #buttons;
+
+  // private variables
+  #firstNum = "";
+  #secondNum = "";
+  #operator = "";
+  #answer = 0;
+  #displayValues = "";
 
   // when constructor is called we...
   constructor(displayScreen, allClear, del, decimal, equal, btns) {
     // grab the display/buttons
-    this.display = document.getElementById(displayScreen);
-    this.allClearBtn = document.getElementById(allClear);
-    this.deleteBtn = document.getElementById(del);
-    this.decimalBtn = document.getElementById(decimal);
-    this.equalBtn = document.getElementById(equal);
-    this.buttons = document.querySelectorAll(`.${btns}`);
-
-    // set up initial values for the first num, second num, operator, displayValues
-    this.#firstNum = "";
-    this.#secondNum = "";
-    this.#operator = "";
-    this.#answer = 0;
-    this.#displayValues = "";
+    this.#display = document.getElementById(displayScreen);
+    this.#allClearBtn = document.getElementById(allClear);
+    this.#deleteBtn = document.getElementById(del);
+    this.#decimalBtn = document.getElementById(decimal);
+    this.#equalBtn = document.getElementById(equal);
+    this.#buttons = document.querySelectorAll(`.${btns}`);
 
     // set up event listeners
-    this.allClearBtn.addEventListener("click", () => {
+    this.#allClearBtn.addEventListener("click", () => {
       this.clear();
       this.updateDisplay();
     });
 
-    this.deleteBtn.addEventListener("click", () => {
+    this.#deleteBtn.addEventListener("click", () => {
       this.remove();
       this.updateDisplay();
     });
 
-    this.decimalBtn.addEventListener("click", (e) => {
+    this.#decimalBtn.addEventListener("click", (e) => {
       this.append(e);
     });
 
-    this.equalBtn.addEventListener("click", () => {
+    this.#equalBtn.addEventListener("click", () => {
       // pressing equal before entering any values for the numbers can cause issues
       if (this.#firstNum === "" && this.#secondNum === "") return;
 
@@ -58,17 +59,17 @@ class Calculator {
       }
 
       // show answer in input
-      this.display.value = this.#answer;
+      this.#display.value = this.#answer;
 
       this.#displayValues = this.#answer;
       this.#firstNum = this.#answer; // set firstNum for future calculations
       this.#secondNum = ""; // reset
       this.#operator = ""; //reset
 
-      this.decimalBtn.disabled = false;
+      this.#decimalBtn.disabled = false;
     });
 
-    this.buttons.forEach((button) => {
+    this.#buttons.forEach((button) => {
       button.addEventListener("click", (e) => {
         this.append(e);
       });
@@ -128,7 +129,7 @@ class Calculator {
   }
 
   clear() {
-    this.decimalBtn.disabled = false;
+    this.#decimalBtn.disabled = false;
     this.#firstNum = "";
     this.#operator = "";
     this.#secondNum = "";
@@ -139,7 +140,7 @@ class Calculator {
   // remove last character from displayValues
   remove() {
     if (this.#displayValues[this.#displayValues.length - 1] === ".")
-      this.decimalBtn.disabled = false;
+      this.#decimalBtn.disabled = false;
     this.#displayValues = this.#displayValues.slice(0, -1);
   }
 
@@ -149,9 +150,9 @@ class Calculator {
   }
 
   updateDisplay() {
-    if (this.#displayValues === "") this.display.value = 0;
+    if (this.#displayValues === "") this.#display.value = 0;
     else {
-      this.display.value = this.#displayValues;
+      this.#display.value = this.#displayValues;
 
       // create array with the first num, operator, and second num
       const array = this.splitExpression(this.#displayValues);
@@ -164,9 +165,9 @@ class Calculator {
     const currentInput =
       this.#operator === "" ? this.#firstNum : this.#secondNum;
     if (currentInput.includes(".")) {
-      this.decimalBtn.disabled = true;
+      this.#decimalBtn.disabled = true;
     } else {
-      this.decimalBtn.disabled = false;
+      this.#decimalBtn.disabled = false;
     }
   }
 
