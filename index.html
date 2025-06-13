@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
+<!-- <a href="https://www.flaticon.com/free-icons/calculator" title="calculator icons">Calculator icons created by Pixel perfect - Flaticon</a> -->
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🔢 Calculator Project</title>
+    <title>Calculator Project</title>
     <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./img/calculator.png" />
   </head>
   <body>
     <div class="container">
@@ -15,28 +21,28 @@
 
         <div class="buttons">
           <button class="all-clear" id="all-clear">AC</button>
-          <button class="delete" id="delete">DE</button>
-          <button class="operator click-buttons">%</button>
-          <button class="operator click-buttons">/</button>
+          <button class="delete" id="delete" data-key="Backspace">DE</button>
+          <button class="operator click-buttons" data-key="Digit5">%</button>
+          <button class="operator click-buttons" data-key="Slash">/</button>
 
-          <button class="number click-buttons">7</button>
-          <button class="number click-buttons">8</button>
-          <button class="number click-buttons">9</button>
-          <button class="operator click-buttons">*</button>
+          <button class="number click-buttons" data-key="Digit7">7</button>
+          <button class="number click-buttons" data-key="Digit8">8</button>
+          <button class="number click-buttons" data-key="Digit9">9</button>
+          <button class="operator click-buttons" data-key="Digit8">*</button>
 
-          <button class="number click-buttons">4</button>
-          <button class="number click-buttons">5</button>
-          <button class="number click-buttons">6</button>
-          <button class="operator click-buttons">-</button>
+          <button class="number click-buttons" data-key="Digit4">4</button>
+          <button class="number click-buttons" data-key="Digit5">5</button>
+          <button class="number click-buttons" data-key="Digit6">6</button>
+          <button class="operator click-buttons" data-key="Minus">-</button>
 
-          <button class="number click-buttons">1</button>
-          <button class="number click-buttons">2</button>
-          <button class="number click-buttons">3</button>
-          <button class="operator click-buttons">+</button>
+          <button class="number click-buttons" data-key="Digit1">1</button>
+          <button class="number click-buttons" data-key="Digit2">2</button>
+          <button class="number click-buttons" data-key="Digit3">3</button>
+          <button class="operator click-buttons" data-key="Equal">+</button>
 
-          <button class="number click-buttons">0</button>
-          <button class="decimal" id="decimal">.</button>
-          <button class="equal" id="equal">=</button>
+          <button class="number click-buttons" data-key="Digit0">0</button>
+          <button class="decimal" id="decimal" data-key="Period">.</button>
+          <button class="equal" id="equal" data-key="Enter">=</button>
         </div>
       </div>
     </div>

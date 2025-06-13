@@ -74,10 +74,36 @@ class Calculator {
         this.append(e);
       });
     });
+
+    // add keyboard support
+    document.addEventListener("keydown", (e) => {
+      let key = document.querySelector(`.number[data-key=${e.code}]`);
+
+      if (
+        (e.shiftKey && e.code === "Digit5") ||
+        e.code === "Slash" ||
+        (e.shiftKey && e.code === "Digit8") ||
+        e.code === "Minus" ||
+        (e.shiftKey && e.code === "Equal")
+      ) {
+        key = document.querySelector(`.operator[data-key=${e.code}]`);
+      } else if (e.code === "Enter") {
+        key = document.querySelector(`.equal[data-key=${e.code}]`);
+      } else if (e.code === "Backspace") {
+        key = document.querySelector(`.delete[data-key=${e.code}]`);
+      } else if (e.code === "Period") {
+        key = document.querySelector(`.decimal[data-key=${e.code}]`);
+      }
+
+      if (!key) return;
+      // console.log(key);
+
+      // method simulates a mouse click on an element.
+      key.click();
+    });
   }
 
   // set up the calculations manually
-
   addition(num1, num2) {
     let result = parseFloat(num1) + parseFloat(num2);
     if (result % 1 !== 0) result = result.toFixed(2);
@@ -98,10 +124,12 @@ class Calculator {
 
   division(num1, num2) {
     let result = parseFloat(num1) / parseFloat(num2);
+
     // division by zero
     if (result === Infinity) {
       return "NaN";
     }
+
     if (result % 1 !== 0) result = result.toFixed(3);
     return result;
   }
